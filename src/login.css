@@ -1,0 +1,81 @@
+.login-component__wrapper{
+    display: flex;
+    justify-content: center;
+}
+.login-component__wrapper form, .login-component__wrapper form label{
+    display: flex;
+    flex-direction: column;
+}
+.login-component__wrapper form {
+    align-items: center;
+}
+.login-component__wrapper form label{
+    align-items: flex-start;
+    padding: 10px 0; 
+}
+.login-component__wrapper form *{
+    box-sizing: border-box;
+    width: 100%;
+}
+.login-component__wrapper form label p{
+    margin: 0;
+    padding: 2px 0;
+    color: red;
+}
+.login-component__wrapper form label input.validation-error{
+    border-color: red;
+}
+/* 
+##Device = Desktops
+##Screen = 1281px to higher resolution desktops
+*/
+@media (min-width: 1281px) {
+    .login-component__wrapper form {
+        width: 30%;
+    }
+}
+/* 
+##Device = Laptops, Desktops
+##Screen = B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .login-component__wrapper form {
+        width: 30%;
+    }
+}
+/* 
+##Device = Tablets, Ipads (portrait)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+    .login-component__wrapper form {
+        width: 60%;
+    }
+}
+/* 
+##Device = Tablets, Ipads (landscape)
+##Screen = B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .login-component__wrapper form {
+        width: 40%;
+    }
+}
+/* 
+##Device = Low Resolution Tablets, Mobiles (Landscape)
+##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+    .login-component__wrapper form {
+        width: 60%;
+    }
+}
+/* 
+##Device = Most of the Smartphones Mobiles (Portrait)
+##Screen = B/w 320px to 479px
+*/
+@media (min-width: 320px) and (max-width: 480px) {
+    .login-component__wrapper form {
+        width: 90%;
+    }
+}

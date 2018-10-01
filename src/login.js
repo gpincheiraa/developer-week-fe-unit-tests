@@ -36,12 +36,12 @@ export class LoginForm{
             }
             input.classList.remove('validation-error');
         } else {
-            input.classList.add('validation-error');
             if (!errorWrapper) {
                 errorWrapper = document.createElement('p');
                 errorWrapper.textContent = message;
                 input.insertAdjacentElement('afterend', errorWrapper);
             }
+            input.classList.add('validation-error');
         }
     }
     isEmail(email) {
@@ -52,8 +52,6 @@ export class LoginForm{
         const input = event.target;
         let errorMessage = 'error';
         let isValid = false;
-
-        console.log(input.value, this.form.usernameInput.element.value);
 
         switch(input.id) {
             case 'username':
@@ -81,8 +79,8 @@ export class LoginForm{
             .catch(this.loginError);
     }
     loginSuccess(response) {
-        console.log("LOGIN SUCCESS", response);
-        window.localStorage.setItem('userData', JSON.stringify(response.user));
+        const serializedData = JSON.stringify(response.user);
+        window.localStorage.setItem('userData', serializedData);
     }
     loginError(error) {
         console.log("LOGIN ERROR", error);
