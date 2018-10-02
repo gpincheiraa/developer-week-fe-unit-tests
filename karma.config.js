@@ -18,6 +18,7 @@ module.exports = function(config) {
         ],
         reporters: [ 'spec', 'coverage-istanbul' ],
         coverageIstanbulReporter: {
+            dir: 'karma-coverage',
             reports: [ 'text-summary', 'html', 'cobertura', 'lcovonly' ],
             'report-config': {
                 html: {
