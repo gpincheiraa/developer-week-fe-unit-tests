@@ -1,6 +1,7 @@
 import { LoginForm } from '../src/login';
 
 describe('Login Form Component', () => {
+    
     const logComponent = (title = '') => {
         console.log(`******************** ${title} ****************************`);
         console.log(document.querySelector('.login-component__wrapper').innerHTML);
@@ -41,5 +42,22 @@ describe('Login Form Component', () => {
         const errorWrapper = document.querySelector('#username ~ p');
         expect(errorWrapper).toBe(null);
         expect(targetInput.classList.contains('validation-error')).toBe(false);
+    });
+
+    it('should call loginSuccess method onSubmit and prevent default submit event', () => {
+        const testRunner = process.env.TEST_RUNNER;
+        const event = {
+            preventDefault: testRunner === 'karma' 
+                ? sinon.spy()
+                : jest.fn()
+        };
+        loginForm.loginSuccess = testRunner === 'karma' 
+            ? sinon.spy()
+            : jest.fn();
+
+        loginForm.onSubmit(event);
+
+        expect(event.preventDefault).toHaveBeenCalled();
+        expect(loginForm.loginSuccess).toHaveBeenCalled();
     });
 });

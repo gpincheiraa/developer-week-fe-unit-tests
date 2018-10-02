@@ -1,3 +1,5 @@
+
+const webpack = require('webpack');
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = function(config) {
@@ -52,7 +54,14 @@ module.exports = function(config) {
                         }
                     }
                 ]
-            }
+            },
+            plugins: [
+                new webpack.DefinePlugin({
+                    'process.env': {
+                        TEST_RUNNER: JSON.stringify('karma')
+                    }
+                })
+            ],
         },
         webpackMiddleware: {
             stats: { chunks: false, modules: false }
