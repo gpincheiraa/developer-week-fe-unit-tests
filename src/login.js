@@ -92,11 +92,11 @@ export class LoginForm{
             <form>
                 <label for="username"> 
                     <span> Usuario </span>
-                    <input id="username" class="untouched" type="text" placeholder="Ingresa tu correo electrónico">
+                    <input id="username" type="text" placeholder="Ingresa tu correo electrónico">
                 </label>
                 <label for="password"> 
                     <span> Contraseña </span>
-                    <input id="password" class="untouched" type="password" placeholder="Ingresa tu contraseña">
+                    <input id="password" type="password" placeholder="Ingresa tu contraseña">
                 </label>
                 <button type="submit" disabled>Ingresar</button>
             </form>
