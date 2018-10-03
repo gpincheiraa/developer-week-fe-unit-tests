@@ -45,11 +45,9 @@ describe('Login Form Component', () => {
         expect(targetInput.classList.contains('validation-error')).toBe(false);
     });
 
-    it('should call loginSuccess method onSubmit and prevent default submit event', async() => {
+    it('should call loginSuccess method on submit and prevent default submit event', async() => {
         const resolvedValue = { status : 'ok' };
-        let event;
-
-        event = { preventDefault: jest.fn() };
+        const event = { preventDefault: jest.fn() };
         loginForm.loginSuccess = jest.fn();
         axiosMock.post.mockReturnValue(Promise.resolve(resolvedValue));
 
@@ -58,4 +56,17 @@ describe('Login Form Component', () => {
         expect(event.preventDefault).toHaveBeenCalled();
         expect(loginForm.loginSuccess).toHaveBeenCalled();
     });
+
+    it('should call loginError method on submit and prevent default submit event', async() => {
+        const rejectedValue = new Error();
+        const event = { preventDefault: jest.fn() };
+        loginForm.loginError = jest.fn();
+        axiosMock.post.mockReturnValue(Promise.reject(rejectedValue));
+
+        await loginForm.onSubmit(event);
+
+        expect(event.preventDefault).toHaveBeenCalled();
+        expect(loginForm.loginError).toHaveBeenCalled();
+    });
+
 });

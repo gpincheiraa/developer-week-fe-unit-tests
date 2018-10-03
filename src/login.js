@@ -76,8 +76,8 @@ export class LoginForm{
         };
 
         return axios.post(this.submitUrl, loginOptions)
-            .then(this.loginSuccess)
-            .catch(this.loginError);
+            .then(response => this.loginSuccess(response))
+            .catch(error => this.loginError(error))
     }
     loginSuccess(response) {
         const serializedData = JSON.stringify(response.user);
