@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack-dev-server --mode=development",
     "build": "webpack",
-    "test:jest": "TEST_RUNNER=jest jest --config jest.config.js --coverage",
+    "test:jest": "jest --config jest.config.js --coverage",
     "tdd:jest": "npm run test:jest -- --watchAll",
     "test:karma": "karma start karma.config.js",
     "tdd:karma": "npm run test:karma -- --singleRun=false"
@@ -19,10 +19,10 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^1.0.0",
-    "jest": "^23.6.0",
     "istanbul-instrumenter-loader": "^3.0.1",
     "jasmine-core": "^3.2.1",
     "jasmine-sinon": "^0.4.0",
+    "jest": "^23.6.0",
     "karma": "^3.0.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "^2.0.4",

@@ -1,4 +1,5 @@
-import { LoginForm } from '../src/login';
+import axiosMock from 'axios';
+import { LoginForm } from '../../src/login';
 
 describe('Login Form Component', () => {
     
@@ -44,18 +45,15 @@ describe('Login Form Component', () => {
         expect(targetInput.classList.contains('validation-error')).toBe(false);
     });
 
-    it('should call loginSuccess method onSubmit and prevent default submit event', () => {
-        const testRunner = process.env.TEST_RUNNER;
-        const event = {
-            preventDefault: testRunner === 'karma' 
-                ? sinon.spy()
-                : jest.fn()
-        };
-        loginForm.loginSuccess = testRunner === 'karma' 
-            ? sinon.spy()
-            : jest.fn();
+    it('should call loginSuccess method onSubmit and prevent default submit event', async() => {
+        const resolvedValue = { status : 'ok' };
+        let event;
 
-        loginForm.onSubmit(event);
+        event = { preventDefault: jest.fn() };
+        loginForm.loginSuccess = jest.fn();
+        axiosMock.post.mockReturnValue(Promise.resolve(resolvedValue));
+
+        await loginForm.onSubmit(event);
 
         expect(event.preventDefault).toHaveBeenCalled();
         expect(loginForm.loginSuccess).toHaveBeenCalled();

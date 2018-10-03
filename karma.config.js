@@ -10,10 +10,11 @@ module.exports = function(config) {
         browsers: [ 'ChromeHeadless' ],
         concurrency: Infinity,
         frameworks: [ 'jasmine', 'sinon' ],
+        client: { captureConsole: true },
         files: [
             'node_modules/jasmine-sinon/lib/jasmine-sinon.js',
             'src/**/*.js',
-            'test/**/*.js',
+            'test/karma/**/*.js',
         ],
         exclude: [
             'src/index.js',
@@ -56,11 +57,7 @@ module.exports = function(config) {
                 ]
             },
             plugins: [
-                new webpack.DefinePlugin({
-                    'process.env': {
-                        TEST_RUNNER: JSON.stringify('karma')
-                    }
-                })
+                new webpack.HotModuleReplacementPlugin()
             ],
         },
         webpackMiddleware: {

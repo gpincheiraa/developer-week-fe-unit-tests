@@ -74,7 +74,8 @@ export class LoginForm{
             username: this.form.usernameInput,
             password: this.form.passwordInput
         };
-        axios.post(this.submitUrl, loginOptions)
+
+        return axios.post(this.submitUrl, loginOptions)
             .then(this.loginSuccess)
             .catch(this.loginError);
     }
