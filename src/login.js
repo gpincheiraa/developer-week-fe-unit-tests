@@ -18,6 +18,7 @@ export class LoginForm{
             };
         });
         this.submitUrl = options.submitUrl || 'users/login';
+        this.loading = false;
     }
     checkFormValidity(){
         const submitButton = document.querySelector('.login-component__wrapper form button');
@@ -27,6 +28,11 @@ export class LoginForm{
         } else {
             submitButton.disabled = true;
         }
+    }
+    search() {
+        setTimeout(() => {
+            this.loading = true;
+        }, 300);
     }
     setValidationError(isValid, input, message) {
         let errorWrapper = input.parentNode.querySelector('p');

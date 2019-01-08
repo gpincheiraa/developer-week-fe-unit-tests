@@ -1,6 +1,8 @@
 import axiosMock from 'axios';
 import { LoginForm } from '../../src/login';
 
+jest.useFakeTimers();
+
 describe('Login Form Component', () => {
     
     const logComponent = (title = '') => {
@@ -77,5 +79,13 @@ describe('Login Form Component', () => {
 
         expect(eventMock.preventDefault).toHaveBeenCalled();
         expect(loginForm.loginError).toHaveBeenCalled();
+    });
+
+    it('search', () => {
+        
+        loginForm.search();
+        jest.runAllTimers();
+        
+        expect(loginForm.loading).toBeTruthy();
     });
 });
